@@ -1,5 +1,5 @@
 person-crud
 ===========
 
-Simple CRUD example
+Simple CRUD Example
 Spring + Hibernate + SQLite
