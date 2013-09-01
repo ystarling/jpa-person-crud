@@ -1,5 +1,5 @@
 Simple CRUD Example (JPA + EclipseLink + SQLite)
------------
+======
 
 git clone git@github.com:ystarling/jpa-person-crud
 mvn test
