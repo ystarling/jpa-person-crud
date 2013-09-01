@@ -6,4 +6,5 @@ Simple CRUD Example
 
 
 mvn test
+
 mvn jetty:run
