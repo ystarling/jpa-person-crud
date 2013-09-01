@@ -2,4 +2,4 @@ person-crud
 ===========
 
 Simple CRUD Example
-Spring + Hibernate + SQLite
+JPA + EclipseLink + SQLite
