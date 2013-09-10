@@ -24,6 +24,11 @@ public class Test {
 	trans.begin();
 	em.persist(t);
 	trans.commit();
+	
+	trans.begin();
+	//t.setFirstName("ds");
+	em.persist(t);
+	trans.commit();
 	// Fetch them
 	TypedQuery<Person> q = em.createQuery("select p from Person p", Person.class);
 	List<Person> results = q.getResultList();
