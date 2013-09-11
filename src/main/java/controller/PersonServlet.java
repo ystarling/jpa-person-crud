@@ -1,45 +1,65 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.PersonService;
+import dao.PersonDao;
 import entity.Injectee;
+import entity.Person;
 
-/**
- * Servlet implementation class PersonServlet
- */
 @WebServlet("/PersonServlet")
 public class PersonServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	@Inject Injectee i;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PersonServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("In doGet()");
-        System.out.println("Injectee says: "+i.sayHi());
+
+	@Inject
+	Injectee in;
+	@Inject
+	PersonService servcice;
+	@Inject
+	PersonDao dao;
+
+	// This field injection is thread-safe
+	@PersistenceUnit(unitName = "person-unit")
+	private EntityManagerFactory emf;
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		process(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		process(request, response);
 	}
 
+	private void process(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+        dao.insert(new Person());
+
+        String action = request.getServletPath();
+
+        if(action.equals("add")){
+        	EntityManager em = emf.createEntityManager();
+        	
+        } else if(action.equals("update")){
+        	EntityManager em = emf.createEntityManager();
+        	
+        } else if(action.equals("delete")){
+        	EntityManager em = emf.createEntityManager();
+        	
+        } else if(action.equals("list")){
+        	EntityManager em = emf.createEntityManager();
+        	
+        } else if(true){
+        	
+        }
+	}
 }
