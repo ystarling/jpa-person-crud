@@ -45,7 +45,7 @@ public class PersonServlet extends HttpServlet {
         dao.insert(new Person());
 
         String action = request.getServletPath();
-
+        EntityManager emTest = emf.createEntityManager();
         if(action.equals("add")){
         	EntityManager em = emf.createEntityManager();
         	
