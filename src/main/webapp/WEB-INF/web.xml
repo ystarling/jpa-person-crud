@@ -5,7 +5,7 @@
   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 
-	<display-name></display-name>
+	<display-name>Person CRUD</display-name>
 
 	<!-- Weld Jetty Configuration parameters -->
 	<listener>
